@@ -24,8 +24,17 @@ const questions = [
 ];
 
 // FUNCTIONS
-function writeToFile(shapeData) {
-    fs.writeFile();
+function writeToFile(shape) {
+    const svgText = `
+    <svg version="1.1"
+     width="300" height="200"
+     xmlns="http://www.w3.org/2000/svg">
+
+    ${shape.render()}
+
+    </svg>
+    `;
+    fs.writeFile("./examples/logo.svg", svgText, (err) => err ? console.log("Error") : console.log("Success"));
 }
 
 // USER INTERACTIONS
