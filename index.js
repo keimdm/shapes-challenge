@@ -11,6 +11,11 @@ const questions = [
         name: 'text',
     },
     {
+        type: 'input',
+        message: 'What color should be used for the text? (can use a keyword or hex code)',
+        name: 'textColor',
+    },
+    {
         type: 'list',
         message: 'What shape should be used?',
         choices: ['Circle', 'Square', 'Triangle'],
@@ -18,7 +23,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'What color should be used? (can use a keyword or hex code)',
+        message: 'What color should be used for the shape? (can use a keyword or hex code)',
         name: 'color',
     },
 ];
@@ -34,26 +39,26 @@ function writeToFile(shape) {
 
     </svg>
     `;
-    fs.writeFile("./examples/logo.svg", svgText, (err) => err ? console.log("Error") : console.log("Success"));
+    fs.writeFile("./examples/logo.svg", svgText, (err) => err ? console.log("Error: Failed to generate logo.svg") : console.log("Generated logo.svg"));
 }
 
 // USER INTERACTIONS
 function init() {
     inquirer.prompt(questions).then((response) => {
-        const { text, shape, color } = response;
+        const { text, textColor, shape, color } = response;
         let newShape;
         switch (shape) {
             case "Circle":
-                newShape = new Circle(text, color);
+                newShape = new Circle(text, textColor, color);
                 break;
             case "Square":
-                newShape = new Square(text, color);
+                newShape = new Square(text, textColor, color);
                 break;
             case "Triangle":
-                newShape = new Triangle(text, color);
+                newShape = new Triangle(text, textColor, color);
                 break;
             default:
-                newShape = new Circle(text, color);
+                newShape = new Circle(text, textColor, color);
                 break;
         }
         writeToFile(newShape);
