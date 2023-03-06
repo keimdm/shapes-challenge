@@ -46,22 +46,28 @@ function writeToFile(shape) {
 function init() {
     inquirer.prompt(questions).then((response) => {
         const { text, textColor, shape, color } = response;
-        let newShape;
-        switch (shape) {
-            case "Circle":
-                newShape = new Circle(text, textColor, color);
-                break;
-            case "Square":
-                newShape = new Square(text, textColor, color);
-                break;
-            case "Triangle":
-                newShape = new Triangle(text, textColor, color);
-                break;
-            default:
-                newShape = new Circle(text, textColor, color);
-                break;
+        if (text.length > 3) {
+            console.log("Error: Only 3 characters can be displayed - please try again");
+            return new Error("Error: Only 3 characters can be displayed - please try again");
         }
-        writeToFile(newShape);
+        else {
+            let newShape;
+            switch (shape) {
+                case "Circle":
+                    newShape = new Circle(text, textColor, color);
+                    break;
+                case "Square":
+                    newShape = new Square(text, textColor, color);
+                    break;
+                case "Triangle":
+                    newShape = new Triangle(text, textColor, color);
+                    break;
+                default:
+                    newShape = new Circle(text, textColor, color);
+                    break;
+            }
+            writeToFile(newShape);
+        }
     });
 }
 
