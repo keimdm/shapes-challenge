@@ -29,6 +29,7 @@ const questions = [
 ];
 
 // FUNCTIONS
+// inserts render function output from input shape into svg file framework to generate logo
 function writeToFile(shape) {
     const svgText = `
     <svg version="1.1"
@@ -39,18 +40,22 @@ function writeToFile(shape) {
 
     </svg>
     `;
+    // writes logo to svg file
     fs.writeFile("./examples/logo.svg", svgText, (err) => err ? console.log("Error: Failed to generate logo.svg") : console.log("Generated logo.svg"));
 }
 
 // USER INTERACTIONS
+// iterates through questions and processes responses
 function init() {
     inquirer.prompt(questions).then((response) => {
         const { text, textColor, shape, color } = response;
+        // throws an error if more than 3 characters are entered
         if (text.length > 3) {
             console.log("Error: Only 3 characters can be displayed - please try again");
             return new Error("Error: Only 3 characters can be displayed - please try again");
         }
         else {
+            // sets up shape to be whatever was selected by user
             let newShape;
             switch (shape) {
                 case "Circle":
@@ -66,6 +71,7 @@ function init() {
                     newShape = new Circle(text, textColor, color);
                     break;
             }
+            // passes to file writer function
             writeToFile(newShape);
         }
     });
