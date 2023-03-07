@@ -21,7 +21,7 @@ This project is intended to allow the user to quickly generate a basic logo by r
 * The logo will be generated in the examples folder
 
 Please refer to the following video for an example of the app's functionality:
-[Video Link](https://drive.google.com/file/d/1smdRzuFbOBH21L9XEXibXmHFO7WfDH_3/view)
+[Video Link](https://drive.google.com/file/d/15QS9C0O-YXeSTIwgcSH8xW6vDDzkl7Gz/view)
 
 ## Contributing:
 In order to contribute, please feel free to fork the repo and submit a pull request with your suggested improvement.
