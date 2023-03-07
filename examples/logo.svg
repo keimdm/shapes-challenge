@@ -4,9 +4,9 @@
      xmlns="http://www.w3.org/2000/svg">
 
     
-        <rect x="68" y="18" width="164" height="164" fill="yellow" />
+        <circle cx="150" cy="100" r="82" fill="red" />
 
-        <text x="150" y="120" font-size="60" text-anchor="middle" fill="blue">D</text>
+        <text x="150" y="120" font-size="60" text-anchor="middle" fill="white">DMK</text>
         
 
     </svg>
